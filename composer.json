@@ -1,6 +1,6 @@
 {
-    "name": "tamayo/laravel-scout-elastic",
-    "description": "Elastic Driver for Laravel Scout",
+    "name": "mradamwood/laravel-scout-elastic",
+    "description": "Elastic Driver for Laravel Scout with Multi Index Support",
     "keywords": ["laravel", "scout", "elasticsearch", "elastic"],
     "require": {
         "php": ">=5.6.4",
