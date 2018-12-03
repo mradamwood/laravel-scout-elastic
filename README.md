@@ -2,18 +2,9 @@
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
-This package makes is a fork of the [Elasticsearch](https://www.elastic.co/products/elasticsearch) driver for Laravel Scout by Erick Tamayo
-
-## Contents
-
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
+This package makes is a fork of the [Elasticsearch](https://www.elastic.co/products/elasticsearch) driver for Laravel Scout by Erick Tamayo but includes multi index and flush support and also creates empty index if index doesn't exists instead of returning index not found error when performing a search.
 
 
-## Usage
-
-Now you can use Laravel Scout as described in the [official documentation](https://laravel.com/docs/5.3/scout)
 ## Credits
 
 - [Erick Tamayo](https://github.com/ericktamayo)
