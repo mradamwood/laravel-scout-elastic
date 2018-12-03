@@ -108,6 +108,22 @@ class ElasticsearchEngine extends Engine
     }
 
     /**
+     * Flush all of the model's records from the engine.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @return void
+     */
+    public function flush($model)
+    {
+        $params['body'][] = [
+            'delete' => [
+                '_index' => $this->getIndex($model)
+            ]
+        ];
+
+    }
+
+    /**
      * Perform the given search on the engine.
      *
      * @param  Builder  $builder
@@ -151,6 +167,11 @@ class ElasticsearchEngine extends Engine
      */
     protected function performSearch(Builder $builder, array $options = [])
     {
+        $indexParams = [
+            //'id' => $builder->model->getKey(),
+            'index' => $builder->index ?: $this->getIndex($builder->model)
+        ];
+
         $params = [
             'index' => $builder->index ?: $this->getIndex($builder->model),
             'type' => $builder->index ?: $builder->model->searchableAs(),
@@ -189,7 +210,12 @@ class ElasticsearchEngine extends Engine
             );
         }
 
+        if(!$this->elastic->indices()->exists($indexParams)) {
+            $this->elastic->indices()->create($indexParams);
+        }
+
         return $this->elastic->search($params);
+
     }
 
     /**
