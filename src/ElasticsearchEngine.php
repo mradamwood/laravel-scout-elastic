@@ -178,7 +178,11 @@ class ElasticsearchEngine extends Engine
             'body' => [
                 'query' => [
                     'bool' => [
-                        'must' => [['query_string' => [ 'query' => "*{$builder->query}*"]]]
+                        'must' => [
+                            'multi_match' => [
+                                'query' => $builder->query,
+                            ],
+                        ]
                     ]
                 ]
             ]
