@@ -181,6 +181,7 @@ class ElasticsearchEngine extends Engine
                         'must' => [
                             'multi_match' => [
                                 'query' => $builder->query,
+                                'fuzziness' => 'AUTO',
                             ],
                         ]
                     ]
